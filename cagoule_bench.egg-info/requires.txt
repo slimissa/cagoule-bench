@@ -1,0 +1,14 @@
+cagoule>=1.2.0
+cryptography>=41.0
+argon2-cffi>=21.3
+psutil>=5.9
+rich>=13.0
+click>=8.1
+jinja2>=3.1
+pytest-benchmark>=4.0
+
+[dev]
+pytest>=7.0
+pytest-benchmark>=4.0
+black
+mypy

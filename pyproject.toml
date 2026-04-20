@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cagoule-bench"
+version = "1.0.0"
+description = "Suite de benchmarking cryptographique pour CAGOULE"
+authors = [{ name = "LASS", email = "slimissa@example.com" }]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    # TODO: Uncomment when cagoule is published on PyPI
+    # "cagoule>=1.2.0",
+    "cryptography>=41.0",
+    "argon2-cffi>=21.3",
+    "psutil>=5.9",
+    "rich>=13.0",
+    "click>=8.1",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-benchmark>=4.0",
+    "black>=23.0",
+    "mypy>=1.0",
+]
+
+[project.scripts]
+cagoule-bench = "bench.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v -m 'not slow'"
+markers = [
+    "slow: tests integration reels (crypto KDF multiprocess) — lancer avec: pytest -m slow",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+warn_return_any = true
+warn_unused_configs = true
